@@ -1,0 +1,106 @@
+# Credentials 
+## Access for the provider to fetch cluster and environment information
+ccloud_api_key    = ""
+ccloud_api_secret = ""
+
+## Target environment and cluster
+environment_id = ""
+cluster_id     = ""
+
+## Access for the provider to create topics, credentials and permissions in a a target environment 
+## And cluster
+cluster_credentials = {
+  api_key    = ""
+  api_secret = ""
+}
+
+# Topic definitions
+# Add each topic and it's configuration
+kafka_topics = [
+  {
+    name       = "topic-1"
+    partitions = 4
+    config = {
+      "delete.retention.ms" = "86100000"
+    }
+  },
+  {
+    name       = "topic-2"
+    partitions = 4
+    config = {
+      "delete.retention.ms" = "10000000"
+    }
+  },
+  {
+    name       = "topic-demo"
+    partitions = 1
+    config = {
+      "delete.retention.ms" = "10000000"
+    }
+  },
+  {
+    name       = "topic-ahb"
+    partitions = 5
+    config = {
+      "delete.retention.ms" = "1"
+      "min.insync.replicas" = "2"
+    },
+  }
+]
+
+# App definitions
+# Add each application and the roles/acls they should have
+applications = [
+  {
+    name = "app-1"
+    rolebindings = [
+      {
+        topic     = "topic-1"
+        role_name = "DeveloperRead"
+      },
+      {
+        topic     = "topic-demo"
+        role_name = "DeveloperWrite"
+      },
+    ]
+    acls = [
+      {
+        resource_type = "TOPIC"
+        resource_name = "topic-"
+        pattern_type  = "PREFIXED"
+        operation     = "DELETE"
+        permission    = "ALLOW"
+      }
+    ]
+  },
+
+  {
+    name = "app-2"
+    rolebindings = [
+      {
+        topic     = "topic-2"
+        role_name = "DeveloperWrite"
+      },
+    ]
+    acls = [
+      {
+        resource_type = "TOPIC"
+        resource_name = "topic-"
+        pattern_type  = "PREFIXED"
+        operation     = "DELETE"
+        permission    = "ALLOW"
+      }
+    ]
+  },
+
+  {
+    name = "app-cashback"
+    rolebindings = [
+      {
+        topic     = "topic-demo"
+        role_name = "DeveloperWrite"
+      },
+    ]
+    acls = []
+  },
+]
