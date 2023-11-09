@@ -1,6 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 
-Terrafom module to create and manage topics, and application credentials (Service Accounts, API Key
+module to create and manage topics, and application credentials (Service Accounts, API Key
 and API Secret). It generates outputs that are useful to query created resources and generate Java
 configurations out of applications credentials. Check the `terraform.tfvars.sample` file for an
 example of how to use the variables documented bellow

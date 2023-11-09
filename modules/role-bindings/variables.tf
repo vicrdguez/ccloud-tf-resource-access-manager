@@ -8,9 +8,10 @@ variable "cluster_id" {
 
 variable "rolebindings" {
   type = list(object({
-      topic     = string
-      role_name = string
-    }))
+    resource_type = string
+    name         = string
+    role_name     = string
+  }))
 }
 
 variable "service_account_id" {

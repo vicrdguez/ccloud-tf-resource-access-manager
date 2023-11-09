@@ -55,11 +55,13 @@ applications = [
     name = "app-1"
     rolebindings = [
       {
-        topic     = "topic-1"
+        resource_type = "topic"
+        name     = "topic-1"
         role_name = "DeveloperRead"
       },
       {
-        topic     = "topic-demo"
+        resource_type = "topic"
+        name     = "topic-demo"
         role_name = "DeveloperWrite"
       },
     ]
@@ -78,7 +80,8 @@ applications = [
     name = "app-2"
     rolebindings = [
       {
-        topic     = "topic-2"
+        resource_type = "topic"
+        name     = "topic-2"
         role_name = "DeveloperWrite"
       },
     ]
@@ -97,7 +100,8 @@ applications = [
     name = "app-cashback"
     rolebindings = [
       {
-        topic     = "topic-demo"
+        resource_type = "topic"
+        name     = "topic-demo"
         role_name = "DeveloperWrite"
       },
     ]
