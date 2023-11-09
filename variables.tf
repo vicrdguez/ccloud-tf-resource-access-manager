@@ -1,20 +1,20 @@
 variable "ccloud_api_key" {
-  type = string
+  type        = string
   description = "Confluent Cloud API Key"
 }
 
 variable "ccloud_api_secret" {
-  type = string
+  type        = string
   description = "Confluent Cloud API Secret"
 }
 
 variable "environment_id" {
-  type = string
+  type        = string
   description = "The Confluent Cloud environment you want to target for this deployment"
 }
 
 variable "cluster_id" {
-  type = string
+  type        = string
   description = "The Confluent Cloud cluster you want to target for this deployment"
 }
 
@@ -34,15 +34,16 @@ variable "applications" {
   type = list(object({
     name = string
     rolebindings = list(object({
-      topic     = string
-      role_name = string
+      resource_type = string
+      name          = string
+      role_name     = string
     }))
     acls = list(object({
       resource_type = string
       resource_name = string
       pattern_type  = string
       operation     = string
-      permission   = string
+      permission    = string
     }))
   }))
 
@@ -55,12 +56,12 @@ variable "applications" {
 }
 
 variable "service_account_prefix" {
-  default = ""
+  default     = ""
   description = "Name preffix for the Service Accounts created for each applications"
 }
 
 variable "service_account_suffix" {
-  default = "-sa"
+  default     = "-sa"
   description = "Name suffix for the Service Accounts created for each applications"
 }
 
