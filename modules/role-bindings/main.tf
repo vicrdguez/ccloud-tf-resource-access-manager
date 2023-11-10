@@ -10,7 +10,7 @@ data "confluent_kafka_cluster" "cluster" {
 # }
 
 resource "confluent_role_binding" "role_binding" {
-  for_each    = { for rb in var.rolebindings : "${rb.topic}@${rb.role_name}" => rb }
+  for_each    = { for rb in var.rolebindings : "${rb.name}@${rb.role_name}@${rb.resource_type}" => rb }
   principal   = "User:${var.service_account_id}"
   role_name   = each.value.role_name
   crn_pattern = "${data.confluent_kafka_cluster.cluster.rbac_crn}/kafka=${data.confluent_kafka_cluster.cluster.id}/${lower(each.value.resource_type)}=${each.value.name}"

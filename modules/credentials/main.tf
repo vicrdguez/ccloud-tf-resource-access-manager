@@ -40,6 +40,15 @@ resource "confluent_api_key" "ak" {
   depends_on = [confluent_service_account.sa]
 }
 
+resource "azurerm_key_vault_secret" "ccloud_ak" {
+  name         = confluent_api_key.ak.id
+  value        = confluent_api_key.ak.secret
+  key_vault_id = var.key_vault_id
+
+  depends_on = [confluent_api_key.ak]
+}
+
+
 # resource "local_file" "app_configs_file" {
 #   content = <<-EOT
 #   # Required connection configs for Kafka producer, consumer, and admin

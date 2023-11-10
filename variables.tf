@@ -73,3 +73,30 @@ variable "cluster_credentials" {
   })
   description = "Confluent Cloud **cluster** API Key and Secret"
 }
+
+variable "key_vault_id" {
+  description = "Azure Key Vault ID used to store Confluent Cloud API Keys"
+  type        = string
+}
+
+variable "subscription_id" {
+  description = "Subscription ID on Azure"
+  type        = string
+}
+
+
+variable "client_id" {
+  description = "The ID of the Client on Azure"
+  type        = string
+}
+
+variable "client_secret" {
+  description = "The Secret of the Client on Azure"
+  type        = string
+}
+
+variable "tenant_id" {
+  description = "The Azure tenant ID in which Subscription exists"
+  type        = string
+}
+

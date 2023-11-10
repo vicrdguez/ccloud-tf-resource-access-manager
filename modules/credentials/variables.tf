@@ -13,3 +13,10 @@ variable "service_account_prefix" {
 
 variable "service_account_suffix" {
 }
+
+variable "key_vault_id" {
+  description = "Azure Key Vault ID used to store Confluent Cloud API Keys"
+  type = string
+}
+
+
